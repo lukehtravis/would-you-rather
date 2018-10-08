@@ -15,9 +15,10 @@ class App extends Component {
   }
 }
 
-function mapStateToProps ({ questions }) {
+function mapStateToProps (state) {
   return {
-    questionsStuff: questions
+    questionsStuff: state[0],
+    usersStuff: state[1]
   }
 }
 

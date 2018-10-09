@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
+import Leaderboard from '../components/Leaderboard'
 
 class App extends Component {
   componentDidMount() {
@@ -9,16 +10,16 @@ class App extends Component {
   render() {
     return (
       <div>
-      <p>Hey</p>
+      <Leaderboard />
       </div>
     )
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps ({questions, users}) {
   return {
-    questionsStuff: state[0],
-    usersStuff: state[1]
+    questionsStuff: questions,
+    usersStuff: users
   }
 }
 

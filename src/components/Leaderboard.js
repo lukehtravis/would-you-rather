@@ -1,37 +1,31 @@
 import  React, {Component} from 'react'
 import {connect} from 'react-redux'
+import LeaderboardIndividual from '../components/LeaderboardIndividual'
 
 class Leaderboard extends Component {
   render() {
     return (
       <div className="leaderboard-box">
-        <div className="leaderboard-box-container">
-          <div className="leaderboard-avatar">
-            <img />
-          </div>
-          <div className="leaderboard-questions">
-            <h3></h3>
-            <div className="leaderboard-questions-list">
-              <div className="leaderboard-questions-row">
-                <span>Type of Question</span><span>#</span>
-              </div>
-              <div className="leaderboard-questions-row">
-                <span>Type of Question</span><span>#</span>
-              </div>
-            </div>
-          </div>
-          <div className="leaderboard-score">
-            <div></div>
-          </div>
-        </div>
+        {this.props.leaderboardUsers.map((user) => (
+          <LeaderboardIndividual user={user} key={user} />
+        ))}
       </div>
     )
   }
 }
-
-function mapStateToProps(state) {
+// Pass in users part of store using destructuring
+function mapStateToProps({users}) {
+  // Create temporary points property on users object (points == questions + answers)
+  for (let name in users) {
+    if (users.hasOwnProperty(name)) {
+      users[name].score = 0;
+      users[name].score = Object.keys(users[name].answers).length + users[name].questions.length;
+    }
+  }
   return {
-    stately: state
+    // Order object keys by points scores to send to lower components
+    leaderboardUsers: Object.keys(users).sort((a,b) => users[b].score - users[a].score),
+    leaderboardUsersFull: users
   }
 }
 

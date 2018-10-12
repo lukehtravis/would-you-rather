@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Leaderboard from '../components/Leaderboard'
+import Nav from '../components/Nav'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 class App extends Component {
   componentDidMount() {
@@ -9,9 +11,14 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-      <Leaderboard />
-      </div>
+      <Router>
+        <div>
+          <Nav />
+          <div>
+            <Leaderboard />
+          </div>
+        </div>
+      </Router>
     )
   }
 }

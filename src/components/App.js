@@ -23,10 +23,11 @@ class App extends Component {
   }
 }
 
-function mapStateToProps ({questions, users}) {
+function mapStateToProps ({questions, users, authenticatedUser}) {
   return {
     questionsStuff: questions,
-    usersStuff: users
+    usersStuff: users,
+    authedUser: authenticatedUser
   }
 }
 

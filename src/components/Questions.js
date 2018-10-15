@@ -23,7 +23,7 @@ class Questions extends Component {
         </div>
         <div className="questions-list">
           {answered.map(question => (
-            <div className="questions-list-question">
+            <div key={question.id} className="questions-list-question">
               <div className="questions-list-header">{question.author}</div>
               <div className="questions-list-body">
                 <div>
@@ -40,7 +40,7 @@ class Questions extends Component {
         </div>
         <div className="questions-list">
           {unanswered.map(question => (
-            <div className="questions-list-question">
+            <div key={question.id} className="questions-list-question">
               <div className="questions-list-header">{question.author}</div>
               <div className="questions-list-body">
                 <div>

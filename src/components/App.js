@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Leaderboard from '../components/Leaderboard'
+import Questions from '../components/Questions'
 import Nav from '../components/Nav'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
@@ -15,7 +16,8 @@ class App extends Component {
         <div>
           <Nav />
           <div>
-            <Leaderboard />
+            <Route path='/' exact component={Questions} />
+            <Route path='/leaderboard' exact component={Leaderboard} />
           </div>
         </div>
       </Router>

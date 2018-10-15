@@ -4,7 +4,7 @@ import users from './users'
 import authenticatedUser from './authenticatedUser'
 
 export default combineReducers({
+  authenticatedUser,
   questions,
   users,
-  authenticatedUser
 })

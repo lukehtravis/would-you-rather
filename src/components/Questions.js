@@ -28,7 +28,7 @@ class Questions extends Component {
                 <div className="questions-list-question-text">
                   <p>Would You Rather</p>
                   <p>{question.optionOne.text}</p>
-                  <Link to={question.id}>Link To Individual Poll</Link>
+                  <Link to={`/questions/${question.id}`}>Link To Individual Poll</Link>
                 </div>
               </div>
             </div>

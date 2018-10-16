@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import ListedQuestion from './ListedQuestion'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 class Questions extends Component {
   render() {
@@ -17,22 +18,17 @@ class Questions extends Component {
     return (
       <div className="questions-page">
         <div className="questions-list">
-          <div className="questions-list-question">
-            <p></p>
-          </div>
-        </div>
-        <div className="questions-list">
           {answered.map(question => (
             <div key={question.id} className="questions-list-question">
               <div className="questions-list-header">{question.author}</div>
               <div className="questions-list-body">
                 <div>
-                  <img />
+                  <img src={this.props.users[question.author].avatarURL} />
                 </div>
                 <div className="questions-list-question-text">
                   <p>Would You Rather</p>
                   <p>{question.optionOne.text}</p>
-                  <a>Link To Individual Poll</a>
+                  <Link to={question.id}>Link To Individual Poll</Link>
                 </div>
               </div>
             </div>
@@ -72,7 +68,8 @@ function mapStateToProps({questions, authenticatedUser, users}) {
     questions: questions,
     questionsAnswered: answers,
     questionsKeys: questionIds,
-    authedUser: authenticatedUser
+    authedUser: authenticatedUser,
+    users: users
   }
 }
 

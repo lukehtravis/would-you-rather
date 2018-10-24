@@ -15,3 +15,7 @@ export function getInitialData () {
     users
   }))
 }
+
+export function saveQuestionAnswer(details) {
+  return _saveQuestionAnswer(details)
+}

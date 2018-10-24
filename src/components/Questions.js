@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import ListedQuestion from './ListedQuestion'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom'
 
 class Questions extends Component {
   render() {
@@ -16,6 +16,7 @@ class Questions extends Component {
       }
     })
     return (
+
       <div className="questions-page">
         <div className="questions-list">
           {answered.map(question => (
@@ -40,12 +41,12 @@ class Questions extends Component {
               <div className="questions-list-header">{question.author}</div>
               <div className="questions-list-body">
                 <div>
-                  <img />
+                  <img  />
                 </div>
                 <div className="questions-list-question-text">
                   <p>Would You Rather</p>
                   <p>{question.optionOne.text}</p>
-                  <a>Link To Individual Poll</a>
+                  <Link to={`/questions/${question.id}`}>Link To Individual Poll</Link>
                 </div>
               </div>
             </div>

@@ -10,8 +10,6 @@ export default function users (state = {}, action) {
       }
     case ANSWER_QUESTION :
       let {type, question} = action
-      console.log(question);
-      console.log(state);
       let userAnswer = {}
       userAnswer[question.qId] = question.answer
 

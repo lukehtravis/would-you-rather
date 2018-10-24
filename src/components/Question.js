@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Route, withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {handleAnswerQuestion} from '../actions/users'
+import QuestionResults from '../components/QuestionResults'
 
 
 
@@ -12,22 +13,21 @@ class Question extends Component {
   render() {
     return (
       <div>
-        <div className="questions-list-question">
-          <div className="questions-list-header">{this.props.individualQuestion.author}</div>
-          <div className="questions-list-body">
+        <div className="question-create">
+          <div className="question-create-header">{this.props.individualQuestion.author}</div>
+          <div className="questions-create-body">
             <div>
               <img />
             </div>
             <div className="questions-list-question-text">
               <p>Would you rather</p>
-                <p><input type="radio" name="options" value="optionOne" />{this.props.individualQuestion.optionOne.text}</p>
-                <p>Or</p>
-                <p><input type="radio" name="options" value="optionTwo" />{this.props.individualQuestion.optionTwo.text}</p>
-
-                <a onClick={() => this.handleSubmit() }>Submit</a>
-
+              <p><input type="radio" name="options" value="optionOne" />{this.props.individualQuestion.optionOne.text}</p>
+              <p>Or</p>
+              <p><input type="radio" name="options" value="optionTwo" />{this.props.individualQuestion.optionTwo.text}</p>
+              <a onClick={() => this.handleSubmit() }>Submit</a>
             </div>
           </div>
+          <QuestionResults />
         </div>
       </div>
     )

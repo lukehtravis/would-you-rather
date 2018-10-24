@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import ListedQuestion from './ListedQuestion'
 import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom'
 
 class Questions extends Component {

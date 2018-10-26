@@ -3,10 +3,10 @@ import {connect} from "react-redux"
 import {Route, withRouter} from "react-router-dom"
 
 class QuestionResults extends Component {
+
   render() {
     let {question, authedUser, properName, imgUrl} = this.props
     let total = question.optionOne.votes.length + question.optionTwo.votes.length
-
     return (
       <div className="question-view">
         <div className="question-view-header">

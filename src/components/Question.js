@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Route, withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {handleAnswerQuestion} from '../actions/users'
+import {handleAnswerQuestionQ} from '../actions/questions'
 import QuestionResults from '../components/QuestionResults'
 
 
@@ -9,6 +10,7 @@ import QuestionResults from '../components/QuestionResults'
 class Question extends Component {
   handleSubmit() {
     this.props.dispatch(handleAnswerQuestion(this.props.individualQuestion.id, document.querySelector('input[name="options"]:checked').value, this.props.authedUser))
+    this.props.dispatch(handleAnswerQuestionQ(this.props.individualQuestion.id, document.querySelector('input[name="options"]:checked').value, this.props.authedUser))
   }
   render() {
     return (

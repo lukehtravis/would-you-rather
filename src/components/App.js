@@ -4,6 +4,7 @@ import { handleInitialData } from '../actions/shared'
 import Leaderboard from '../components/Leaderboard'
 import Questions from '../components/Questions'
 import Question from '../components/Question'
+import Login from '../components/Login'
 import Nav from '../components/Nav'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
@@ -20,6 +21,7 @@ class App extends Component {
             <Route path='/' exact component={Questions} />
             <Route path='/leaderboard' exact component={Leaderboard} />
             <Route path='/questions/:id' component={Question} />
+            <Route path='/login' component={Login} />
           </div>
         </div>
       </Router>

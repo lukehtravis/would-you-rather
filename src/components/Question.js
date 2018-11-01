@@ -13,8 +13,10 @@ class Question extends Component {
     this.props.dispatch(handleAnswerQuestionQ(this.props.individualQuestion.id, document.querySelector('input[name="options"]:checked').value, this.props.authedUser))
   }
   render() {
+    let listOfPepleWhoAnswered = [...this.props.individualQuestion.optionOne.votes, ...this.props.individualQuestion.optionTwo.votes]
     return (
       <div>
+        {!listOfPepleWhoAnswered.includes(this.props.authedUser) ? (
         <div className="question-create">
           <div className="question-create-header">{this.props.individualQuestion.author}</div>
           <div className="questions-create-body">
@@ -29,8 +31,10 @@ class Question extends Component {
               <a onClick={() => this.handleSubmit() }>Submit</a>
             </div>
           </div>
-          <QuestionResults />
         </div>
+        ) : (
+          <QuestionResults />
+        )}
       </div>
     )
   }

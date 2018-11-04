@@ -6,7 +6,7 @@ import Questions from '../components/Questions'
 import Question from '../components/Question'
 import Login from '../components/Login'
 import Nav from '../components/Nav'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 class App extends Component {
   componentDidMount() {
@@ -17,12 +17,16 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
+          {!this.props.authedUser ? (
+            <Route path='/login' component={Login} />
+          ) : (
           <div>
             <Route path='/' exact component={Questions} />
             <Route path='/leaderboard' exact component={Leaderboard} />
             <Route path='/questions/:id' component={Question} />
             <Route path='/login' component={Login} />
           </div>
+          )}
         </div>
       </Router>
     )

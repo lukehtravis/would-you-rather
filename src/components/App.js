@@ -17,16 +17,14 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
-          {!this.props.authedUser ? (
-            <Route path='/login' component={Login} />
-          ) : (
+
           <div>
             <Route path='/' exact component={Questions} />
             <Route path='/leaderboard' exact component={Leaderboard} />
             <Route path='/questions/:id' component={Question} />
             <Route path='/login' component={Login} />
           </div>
-          )}
+          
         </div>
       </Router>
     )

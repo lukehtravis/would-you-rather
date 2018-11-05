@@ -13,6 +13,10 @@ class Question extends Component {
     this.props.dispatch(handleAnswerQuestionQ(this.props.individualQuestion.id, document.querySelector('input[name="options"]:checked').value, this.props.authedUser))
   }
   render() {
+    if (!this.props.individualQuestion) {
+      return null
+    }
+
     let listOfPepleWhoAnswered = [...this.props.individualQuestion.optionOne.votes, ...this.props.individualQuestion.optionTwo.votes]
     return (
       <div>

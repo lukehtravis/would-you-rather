@@ -16,8 +16,10 @@ export function answerQuestion(question) {
   }
 }
 
-export function handleAnswerQuestion(qId, answer, authedUser) {
+export function handleAnswerQuestion(qid, answer, authedUser) {
   return (dispatch) => {
-     dispatch(answerQuestion({qId, answer, authedUser}))
+    saveQuestionAnswer({qid, answer, authedUser})
+      .then(() => dispatch(answerQuestion({qId: qid, answer, authedUser})))
+
   }
 }

@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
-import Leaderboard from '../components/Leaderboard'
-import Questions from '../components/Questions'
-import Question from '../components/Question'
-import Login from '../components/Login'
 import Nav from '../components/Nav'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import Redirector from '../components/Redirector'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 class App extends Component {
   componentDidMount() {
@@ -17,25 +14,18 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
-
-          <div>
-            <Route path='/' exact component={Questions} />
-            <Route path='/leaderboard' exact component={Leaderboard} />
-            <Route path='/questions/:id' component={Question} />
-            <Route path='/login' component={Login} />
-          </div>
-          
+          <Redirector />
         </div>
       </Router>
     )
   }
 }
 
-function mapStateToProps ({questions, users, authenticatedUser}) {
+function mapStateToProps ({questions, users, authenticatedUser}, props) {
   return {
     questionsStuff: questions,
     usersStuff: users,
-    authedUser: authenticatedUser
+    authedUser: authenticatedUser,
   }
 }
 

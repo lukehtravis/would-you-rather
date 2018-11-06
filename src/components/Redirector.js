@@ -5,6 +5,7 @@ import Leaderboard from '../components/Leaderboard'
 import Questions from '../components/Questions'
 import Question from '../components/Question'
 import Login from '../components/Login'
+import NewQuestion from '../components/NewQuestion'
 import Nav from '../components/Nav'
 import { BrowserRouter as Router, Route, Redirect, withRouter } from 'react-router-dom'
 
@@ -20,6 +21,7 @@ class Redirector extends Component {
               <Route path='/' exact component={Questions} />
               <Route path='/leaderboard' exact component={Leaderboard} />
               <Route path='/questions/:id' component={Question} />
+              <Route path='/newquestion'component={NewQuestion} />
               <Route path='/login' component={Login} />
             </div>
           ) : (

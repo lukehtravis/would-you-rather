@@ -11,6 +11,11 @@ export default function Nav () {
           </NavLink>
         </li>
         <li>
+          <NavLink to='/newquestion' exact activeClassName='active'>
+            Add Question
+          </NavLink>
+        </li>
+        <li>
           <NavLink to='/leaderboard' activeClassName='active'>
             Leaderboard
           </NavLink>

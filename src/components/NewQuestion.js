@@ -1,12 +1,29 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Nav from '../components/Nav'
+import {saveQuestion} from '../utils/api.js'
 
 class NewQuestion extends Component {
   state = {
     optionOneText: '',
     optionTwoText: '',
     toHome: false
+  }
+  handleChange = (e) => {
+    const text = e.target.value
+    if (e.target.name == "optionOne") {
+      this.setState(() => ({
+        optionOneText: text
+      }))
+    }
+    if (e.target.name == "optionTwo") {
+      this.setState(() => ({
+        optionTwoText: text
+      }))
+    }
+  }
+  handleSubmit = (e) => {
+
   }
   render() {
     return (
@@ -20,10 +37,12 @@ class NewQuestion extends Component {
             <div className="new-question-form">
               <p>Would You Rather</p>
               <div className="new-question-inputs">
-                <input type="text" name="optionOne" />
-                <p>Or</p>
-                <input type="text" name="optionTwo" />
-                <button>Submit</button>
+                <form>
+                  <input type="text" onChange={this.handleChange} name="optionOne" />
+                  <p>Or</p>
+                  <input type="text" onChange={this.handleChange} name="optionTwo" />
+                  <button type="submit" onSubmit={this.handleSubmit}>Submit</button>
+                </form>
               </div>
             </div>
           </div>
@@ -33,9 +52,9 @@ class NewQuestion extends Component {
   }
 }
 
-function mapStateToProps() {
+function mapStateToProps({authenticatedUser}) {
   return {
-
+    authedUser: authenticatedUser
   }
 }
 

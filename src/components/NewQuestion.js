@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Nav from '../components/Nav'
 import {handleSaveQuestion} from '../actions/questions.js'
+import {Redirect} from "react-router-dom"
 
 class NewQuestion extends Component {
   state = {
@@ -28,8 +29,14 @@ class NewQuestion extends Component {
     const {optionOneText, optionTwoText, redirect } = this.state
     const {dispatch, authedUser} = this.props
     dispatch(handleSaveQuestion(optionOneText, optionTwoText, authedUser))
+    this.setState(() => ({
+      redirect: true
+    }))
   }
   render() {
+    if (this.state.redirect == true) {
+      return <Redirect to="/" />
+    }
     return (
       <div className="new-question">
         <div className="new-question-interior">

@@ -1,5 +1,6 @@
 import { RECEIVE_QUESTIONS } from '../actions/questions'
 import { ADD_VOTE_QUESTION } from '../actions/questions'
+import { SAVE_NEW_QUESTION } from '../actions/questions'
 
 export default function questions (state = {}, action) {
   switch(action.type) {
@@ -19,6 +20,12 @@ export default function questions (state = {}, action) {
               votes: state[question.qId][question.optionChosen].votes.concat(...[question.authedUser])
           }
         }
+      }
+    case SAVE_NEW_QUESTION :
+      let newQuestion = action.question
+      return {
+        ...state,
+        [newQuestion.id]: newQuestion
       }
     default :
       return state

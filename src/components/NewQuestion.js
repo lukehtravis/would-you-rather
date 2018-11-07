@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Nav from '../components/Nav'
-import {saveQuestion} from '../utils/api.js'
+import {handleSaveQuestion} from '../actions/questions.js'
 
 class NewQuestion extends Component {
   state = {
     optionOneText: '',
     optionTwoText: '',
-    toHome: false
+    redirect: false
   }
   handleChange = (e) => {
     const text = e.target.value
@@ -23,7 +23,11 @@ class NewQuestion extends Component {
     }
   }
   handleSubmit = (e) => {
+    e.preventDefault()
 
+    const {optionOneText, optionTwoText, redirect } = this.state
+    const {dispatch, authedUser} = this.props
+    dispatch(handleSaveQuestion(optionOneText, optionTwoText, authedUser))
   }
   render() {
     return (
@@ -41,7 +45,7 @@ class NewQuestion extends Component {
                   <input type="text" onChange={this.handleChange} name="optionOne" />
                   <p>Or</p>
                   <input type="text" onChange={this.handleChange} name="optionTwo" />
-                  <button type="submit" onSubmit={this.handleSubmit}>Submit</button>
+                  <button onClick={this.handleSubmit}>Submit</button>
                 </form>
               </div>
             </div>

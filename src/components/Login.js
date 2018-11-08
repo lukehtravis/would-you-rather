@@ -5,29 +5,26 @@ import {Redirect} from "react-router-dom"
 
 class Login extends Component {
   state = {
-    redirect: false
+    redirect: this.props.authedUser
   }
   handleSubmit() {
     var e = document.getElementById("user-dropdown");
     var user = e.options[e.selectedIndex].value;
     this.props.dispatch(setAuthenticatedUser(user))
-    this.setState(() => ({
-      redirect: true
-    }))
+    this.props.history.push("/")
   }
   render() {
-    if (this.state.redirect === true) {
-      return <Redirect to="/" />
-    }
     return (
       <div className="login-page">
         <div>Please Choose A User to Login As</div>
-        <select id="user-dropdown">
-          <option value="sarahedo">Sarah Edo</option>
-          <option value="tylermcginnis">Tyler McGinnis</option>
-          <option value="johndoe">John Doe</option>
-        </select>
-        <button onClick={() => this.handleSubmit()}>Submit</button>
+        <form>
+          <select id="user-dropdown">
+            <option value="sarahedo">Sarah Edo</option>
+            <option value="tylermcginnis">Tyler McGinnis</option>
+            <option value="johndoe">John Doe</option>
+          </select>
+          <button type="submit" onClick={() => this.handleSubmit()}>Submit</button>
+        </form>
       </div>
     )
   }

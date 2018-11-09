@@ -13,26 +13,41 @@ class Login extends Component {
     this.props.dispatch(setAuthenticatedUser(user))
     this.props.history.push("/")
   }
+  handleLogout() {
+    this.props.dispatch(setAuthenticatedUser(null))
+  }
   render() {
+    let {cleanName} = this.props
+    console.log(cleanName)
+    if (cleanName == null) {
+      cleanName = "Choose A User"
+    }
     return (
       <div className="login-page">
-        <div>Please Choose A User to Login As</div>
+        <div>Please Login To Use the Would You Rather App</div>
         <form>
           <select id="user-dropdown">
+            <option value="currentuser">{cleanName} (current)</option>
             <option value="sarahedo">Sarah Edo</option>
             <option value="tylermcginnis">Tyler McGinnis</option>
             <option value="johndoe">John Doe</option>
           </select>
           <button type="submit" onClick={() => this.handleSubmit()}>Submit</button>
+          <button type="submit" onClick={() => this.handleLogout()}>Logout</button>
         </form>
       </div>
     )
   }
 }
 
-function mapStateToProps({authenticatedUser}) {
+function mapStateToProps({authenticatedUser, users}) {
+  let cleanFullName = null
+  if (users[authenticatedUser] != undefined) {
+    cleanFullName = users[authenticatedUser].name
+  }
   return {
-    authedUser: authenticatedUser
+    authedUser: authenticatedUser,
+    cleanName: cleanFullName
   }
 }
 

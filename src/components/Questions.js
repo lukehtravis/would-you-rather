@@ -79,8 +79,6 @@ function mapStateToProps({questions, authenticatedUser, users}) {
   if (users[authenticatedUser] != undefined) {
     answers = Object.keys(users[authenticatedUser].answers)
   }
-  console.log(answers);
-  console.log(questions)
   return {
     questions: questions,
     questionsAnswered: answers,

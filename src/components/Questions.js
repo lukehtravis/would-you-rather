@@ -22,6 +22,8 @@ class Questions extends Component {
         unanswered.push(this.props.questions[question])
       }
     })
+    unanswered.sort(function(a, b){return b.timestamp - a.timestamp});
+    answered.sort(function(a, b){return b.timestamp - a.timestamp});
     return (
       <div className="questions-page">
         <div className="questions-toggle">
@@ -73,10 +75,12 @@ class Questions extends Component {
 function mapStateToProps({questions, authenticatedUser, users}) {
   let questionIds = Object.keys(questions)
   let answers = []
-  // If statement necessart because mapStateToProps is run for each action
+  // If statement necessary because mapStateToProps is run for each action
   if (users[authenticatedUser] != undefined) {
     answers = Object.keys(users[authenticatedUser].answers)
   }
+  console.log(answers);
+  console.log(questions)
   return {
     questions: questions,
     questionsAnswered: answers,

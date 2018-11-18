@@ -7,29 +7,33 @@ import Question from '../components/Question'
 import Login from '../components/Login'
 import NewQuestion from '../components/NewQuestion'
 import Nav from '../components/Nav'
-import { BrowserRouter as Router, Route, Redirect, withRouter } from 'react-router-dom'
+import Error from '../components/Error'
+import { BrowserRouter as Router, Route, Redirect, withRouter, Switch } from 'react-router-dom'
 
 class Redirector extends Component {
-  componentDidMount() {
-    this.props.dispatch(handleInitialData())
-  }
   render() {
     return (
         <div>
           {this.props.authedUser ? (
             <div>
-              <Route path='/' exact component={Questions} />
-              <Route path='/leaderboard' exact component={Leaderboard} />
-              <Route path='/questions/:id' component={Question} />
-              <Route path='/newquestion'component={NewQuestion} />
-              <Route path='/login' component={Login} />
+              <Switch>
+                <Route path='/' exact component={Questions} />
+                <Route path='/leaderboard' exact component={Leaderboard} />
+                <Route path='/questions/:id' component={Question} />
+                <Route path='/newquestion' exact component={NewQuestion} />
+                <Route path='/login' exact component={Login} />
+                <Route component={Error} />
+              </Switch>
             </div>
           ) : (
             <div>
-              {this.props.currentUrl !== '/login' && (
-                <Redirect to="/login" />
-              )}
-              <Route path='/login' component={Login} />
+              <Switch>
+                {this.props.currentUrl !== '/login' && (
+                  <Redirect to="/login" />
+                )}
+                <Route path='/login' component={Login} />
+                <Route component={Error} />
+              </Switch>
             </div>
           )}
         </div>

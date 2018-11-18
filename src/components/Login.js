@@ -18,7 +18,6 @@ class Login extends Component {
   }
   render() {
     let {cleanName} = this.props
-    console.log(cleanName)
     if (cleanName == null) {
       cleanName = "Choose A User"
     }

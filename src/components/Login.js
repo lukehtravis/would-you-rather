@@ -7,13 +7,14 @@ class Login extends Component {
   state = {
     redirect: this.props.authedUser
   }
-  handleSubmit() {
+  handleSubmit(e) {
     var e = document.getElementById("user-dropdown");
     var user = e.options[e.selectedIndex].value;
     this.props.dispatch(setAuthenticatedUser(user))
     this.props.history.push("/")
   }
-  handleLogout() {
+  handleLogout(e) {
+    e.preventDefault()
     this.props.dispatch(setAuthenticatedUser(null))
   }
   render() {
@@ -31,8 +32,8 @@ class Login extends Component {
             <option value="tylermcginnis">Tyler McGinnis</option>
             <option value="johndoe">John Doe</option>
           </select>
-          <button type="submit" onClick={() => this.handleSubmit()}>Submit</button>
-          <button type="submit" onClick={() => this.handleLogout()}>Logout</button>
+          <button type="submit" onClick={(e) => this.handleSubmit(e)}>Submit</button>
+          <button type="submit" onClick={(e) => this.handleLogout(e)}>Logout</button>
         </form>
       </div>
     )

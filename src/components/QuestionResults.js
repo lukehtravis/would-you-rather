@@ -21,16 +21,16 @@ class QuestionResults extends Component {
             <div className="question-view-answer">
               <p className="question-view-text"></p>
               <div className="question-view-percent">
-
+                {Math.floor((question.optionOne.votes.length / total) * 100)}%
               </div>
-              <p className="question-view-count"></p>
+              <p className="question-view-count">{question.optionOne.votes.length} out of {total} votes</p>
             </div>
             <div className="question-view-answer">
               <p className="question-view-text"></p>
               <div className="question-view-percent">
-
+                {Math.floor((question.optionTwo.votes.length / total) * 100)}%
               </div>
-              <p className="question-view-count">{total}</p>
+              <p className="question-view-count">{question.optionTwo.votes.length} out of {total} votes</p>
             </div>
           </div>
         </div>

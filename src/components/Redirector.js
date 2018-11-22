@@ -32,7 +32,6 @@ class Redirector extends Component {
                   <Redirect to="/login" />
                 )}
                 <Route path='/login' component={Login} />
-                <Route component={Error} />
               </Switch>
             </div>
           )}

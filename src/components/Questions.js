@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Questions extends Component {
   state = {
@@ -16,7 +16,7 @@ class Questions extends Component {
     let unanswered = []
     // Used to sort questions into answered vs unanswered sections for rendering
     this.props.questionsKeys.map(question => {
-      if (this.props.questionsAnswered.includes(this.props.questions[question].id) == true) {
+      if (this.props.questionsAnswered.includes(this.props.questions[question].id) === true) {
         answered.push(this.props.questions[question])
       } else {
         unanswered.push(this.props.questions[question])
@@ -30,15 +30,12 @@ class Questions extends Component {
           <button className="unanswered" onClick={(e) => this.handleClick(e)}>Unanswered</button>
           <button className="answered" onClick={(e) => this.handleClick(e)}>Answered</button>
         </div>
-        {this.state.showing == "unanswered" ? (
+        {this.state.showing === "unanswered" ? (
           <div className="unanswered">
             {unanswered.map(question => (
               <div key={question.id} className="questions-list-question">
-                <div className="questions-list-header">{question.author}</div>
+                <div className="questions-list-header">{question.author} asks</div>
                 <div className="questions-list-body">
-                  <div>
-                    <img  />
-                  </div>
                   <div className="questions-list-question-text">
                     <p>Would You Rather</p>
                     <p>{question.optionOne.text}</p>
@@ -52,7 +49,7 @@ class Questions extends Component {
           <div className="answered">
             {answered.map(question => (
               <div key={question.id} className="questions-list-question">
-                <div className="questions-list-header">{question.author}</div>
+                <div className="questions-list-header">{question.author} asked</div>
                 <div className="questions-list-body">
                   <div className="questions-list-question-text">
                     <p>Would You Rather</p>
@@ -73,7 +70,7 @@ function mapStateToProps({questions, authenticatedUser, users}) {
   let questionIds = Object.keys(questions)
   let answers = []
   // If statement necessary because mapStateToProps is run for each action
-  if (users[authenticatedUser] != undefined) {
+  if (users[authenticatedUser] !== undefined) {
     answers = Object.keys(users[authenticatedUser].answers)
   }
   return {

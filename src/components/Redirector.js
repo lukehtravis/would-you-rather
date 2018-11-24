@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { handleInitialData } from '../actions/shared'
 import Leaderboard from '../components/Leaderboard'
 import Questions from '../components/Questions'
 import Question from '../components/Question'
 import Login from '../components/Login'
 import NewQuestion from '../components/NewQuestion'
-import Nav from '../components/Nav'
 import Error from '../components/Error'
-import { BrowserRouter as Router, Route, Redirect, withRouter, Switch } from 'react-router-dom'
+import { Route, Redirect, withRouter, Switch } from 'react-router-dom'
 
 class Redirector extends Component {
   render() {

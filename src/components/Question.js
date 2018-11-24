@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Route, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {handleAnswerQuestion} from '../actions/users'
 import {handleAnswerQuestionQ} from '../actions/questions'
@@ -24,15 +24,12 @@ class Question extends Component {
         <div className="question-create">
           <div className="question-create-header">{this.props.individualQuestion.author}</div>
           <div className="questions-create-body">
-            <div>
-              <img />
-            </div>
             <div className="questions-list-question-text">
               <p>Would you rather</p>
               <p><input type="radio" name="options" value="optionOne" />{this.props.individualQuestion.optionOne.text}</p>
               <p>Or</p>
               <p><input type="radio" name="options" value="optionTwo" />{this.props.individualQuestion.optionTwo.text}</p>
-              <a onClick={() => this.handleSubmit() }>Submit</a>
+              <button onClick={() => this.handleSubmit() }>Submit</button>
             </div>
           </div>
         </div>

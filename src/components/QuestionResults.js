@@ -14,7 +14,7 @@ class QuestionResults extends Component {
         </div>
         <div className="question-view-split">
           <div className="question-view-image">
-            <img src={this.props.imgUrl}/>
+            <img alt="user avatar" src={this.props.imgUrl}/>
           </div>
           <div className="question-view-result">
             <h2>Results</h2>

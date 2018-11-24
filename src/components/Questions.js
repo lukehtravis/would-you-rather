@@ -27,7 +27,7 @@ class Questions extends Component {
     return (
       <div className="questions-page">
         <div className="questions-toggle">
-          <button className="unanswered" onClick={(e) => this.handleClick(e)}>Unansered</button>
+          <button className="unanswered" onClick={(e) => this.handleClick(e)}>Unanswered</button>
           <button className="answered" onClick={(e) => this.handleClick(e)}>Answered</button>
         </div>
         {this.state.showing == "unanswered" ? (
@@ -54,9 +54,6 @@ class Questions extends Component {
               <div key={question.id} className="questions-list-question">
                 <div className="questions-list-header">{question.author}</div>
                 <div className="questions-list-body">
-                  <div>
-                    <img src={this.props.users[question.author].avatarURL} />
-                  </div>
                   <div className="questions-list-question-text">
                     <p>Would You Rather</p>
                     <p>{question.optionOne.text}</p>

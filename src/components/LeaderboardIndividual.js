@@ -6,7 +6,7 @@ class LeaderboardIndividual extends Component {
     return (
       <div className="leaderboard-box-container">
         <div className="leaderboard-avatar">
-          <img />
+          <img src={this.props.userData.avatarURL} />
         </div>
         <div className="leaderboard-questions">
           <h3>{this.props.userData.name}</h3>

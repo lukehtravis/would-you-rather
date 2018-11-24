@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import Nav from '../components/Nav'
 import {handleSaveQuestion} from '../actions/questions.js'
 import {Redirect} from "react-router-dom"
 
@@ -12,12 +11,12 @@ class NewQuestion extends Component {
   }
   handleChange = (e) => {
     const text = e.target.value
-    if (e.target.name == "optionOne") {
+    if (e.target.name === "optionOne") {
       this.setState(() => ({
         optionOneText: text
       }))
     }
-    if (e.target.name == "optionTwo") {
+    if (e.target.name === "optionTwo") {
       this.setState(() => ({
         optionTwoText: text
       }))
@@ -34,7 +33,7 @@ class NewQuestion extends Component {
     }))
   }
   render() {
-    if (this.state.redirect == true) {
+    if (this.state.redirect === true) {
       return <Redirect to="/" />
     }
     return (

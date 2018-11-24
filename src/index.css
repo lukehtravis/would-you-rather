@@ -30,3 +30,7 @@ nav > div {
   text-align: center;
   padding: 25px;
 }
+
+#selected {
+  background-color: rgba(0, 255, 0, 0.3);
+}

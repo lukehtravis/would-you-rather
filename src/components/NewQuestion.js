@@ -24,13 +24,17 @@ class NewQuestion extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault()
-
     const {optionOneText, optionTwoText } = this.state
-    const {dispatch, authedUser} = this.props
-    dispatch(handleSaveQuestion(optionOneText, optionTwoText, authedUser))
-    this.setState(() => ({
-      redirect: true
-    }))
+    if (optionOneText === '' || optionTwoText === '') {
+      alert("Please make sure all fields are full before submitting")
+      return false
+    } else {
+      const {dispatch, authedUser} = this.props
+      dispatch(handleSaveQuestion(optionOneText, optionTwoText, authedUser))
+      this.setState(() => ({
+        redirect: true
+      }))
+    }
   }
   render() {
     if (this.state.redirect === true) {
@@ -47,7 +51,7 @@ class NewQuestion extends Component {
             <div className="new-question-form">
               <p>Would You Rather</p>
               <div className="new-question-inputs">
-                <form>
+                <form name="addquestion">
                   <input type="text" onChange={this.handleChange} name="optionOne" />
                   <p>Or</p>
                   <input type="text" onChange={this.handleChange} name="optionTwo" />

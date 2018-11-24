@@ -18,7 +18,7 @@ class Redirector extends Component {
                 <Route path='/' exact component={Questions} />
                 <Route path='/leaderboard' exact component={Leaderboard} />
                 <Route path='/questions/:id' component={Question} />
-                <Route path='/newquestion' exact component={NewQuestion} />
+                <Route path='/add' exact component={NewQuestion} />
                 <Route path='/login' exact component={Login} />
                 <Route component={Error} />
               </Switch>

@@ -1,15 +1,14 @@
 import React, {Component} from "react"
 import {connect} from "react-redux"
 import {setAuthenticatedUser} from '../actions/authenticatedUser'
-import {Redirect} from "react-router-dom"
 
 class Login extends Component {
   state = {
     redirect: this.props.authedUser
   }
   handleSubmit(e) {
-    var e = document.getElementById("user-dropdown");
-    var user = e.options[e.selectedIndex].value;
+    var element = document.getElementById("user-dropdown");
+    var user = element.options[element.selectedIndex].value;
     this.props.dispatch(setAuthenticatedUser(user))
     this.props.history.push("/")
   }
@@ -42,7 +41,7 @@ class Login extends Component {
 
 function mapStateToProps({authenticatedUser, users}) {
   let cleanFullName = null
-  if (users[authenticatedUser] != undefined) {
+  if (users[authenticatedUser] !== undefined) {
     cleanFullName = users[authenticatedUser].name
   }
   return {

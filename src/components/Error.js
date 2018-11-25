@@ -6,9 +6,7 @@ class Error extends Component {
   render() {
     return (
       <div className="error">
-        <NavLink to='/' exact activeClassName='active'>
-          Home
-        </NavLink>
+        <p>You've reached a page that doesn't exist. It's an exist-ential crisis! Please navigate via the nav bar</p>
       </div>
     )
   }

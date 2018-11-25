@@ -10,6 +10,9 @@ class Login extends Component {
     var element = document.getElementById("user-dropdown");
     var user = element.options[element.selectedIndex].value;
     this.props.dispatch(setAuthenticatedUser(user))
+    if (this.props.location.state) {
+      return this.props.history.push(this.props.location.state.redirectUrl)
+    }
     this.props.history.push("/")
   }
   handleLogout(e) {

@@ -27,7 +27,7 @@ class Redirector extends Component {
             <div>
               <Switch>
                 {this.props.currentUrl !== '/login' && (
-                  <Redirect to="/login" />
+                  <Redirect to={{pathname: '/login', state: {redirectUrl: this.props.location.pathname}}} />
                 )}
                 <Route path='/login' component={Login} />
               </Switch>

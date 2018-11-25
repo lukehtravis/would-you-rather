@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Route, Redirect, Switch } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {handleAnswerQuestion} from '../actions/users'
 import {handleAnswerQuestionQ} from '../actions/questions'
@@ -24,7 +24,7 @@ class Question extends Component {
   }
   render() {
     if (!this.props.individualQuestion) {
-      return null
+      return <Switch><Redirect to="/error" /></Switch>
     }
 
     let listOfPepleWhoAnswered = [...this.props.individualQuestion.optionOne.votes, ...this.props.individualQuestion.optionTwo.votes]
